@@ -28,7 +28,6 @@ class App extends Component {
     }
     return (
       <div className="App">
-        <Auth />
         <Profile />
       </div>
     );
