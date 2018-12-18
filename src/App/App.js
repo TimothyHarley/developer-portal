@@ -4,7 +4,7 @@ import 'firebase/auth';
 import connection from '../Helpers/Data/connection';
 import Auth from '../Components/Auth/Auth';
 import authRequests from '../Helpers/Data/authRequests';
-import MyNavbar from '../Components/myNavbar/MyNavbar';
+import MyNavbar from '../Components/myNavbar/myNavbar';
 import Profile from '../Components/Profile/profile';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.scss';
