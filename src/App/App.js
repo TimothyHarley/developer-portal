@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+import firebase from 'firebase/app';
+import 'firebase/auth';
 import connection from '../Helpers/Data/connection';
 import Auth from '../Components/Auth/Auth';
-import MyNavbar from '../Components/myNavbar/myNavbar';
+import authRequests from '../Helpers/Data/authRequests';
+import MyNavbar from '../Components/myNavbar/MyNavbar';
 import Profile from '../Components/Profile/profile';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.scss';
@@ -13,6 +16,21 @@ class App extends Component {
 
   componentDidMount() {
     connection();
+    this.removeListener = firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.setState({
+          authed: true,
+        });
+      } else {
+        this.setState({
+          authed: false,
+        });
+      }
+    });
+  }
+
+  componentWillUnmount() {
+    this.removeListener();
   }
 
   isAuthenticated = () => {
@@ -20,17 +38,22 @@ class App extends Component {
   }
 
   render() {
+    const logOutClickEvent = () => {
+      authRequests.logoutUser();
+      this.setState({ authed: false });
+    };
+
     if (!this.state.authed) {
       return (
         <div className="App">
-          <MyNavbar />
-          <Auth isAuthenticated={this.isAuthenticated}/>
+          <MyNavbar isAuthed={this.state.authed} logOutClickEvent={logOutClickEvent} />
+          <Auth isAuthenticated={this.isAuthenticated} />
         </div>
       );
     }
     return (
       <div className="App">
-        <MyNavbar />
+        <MyNavbar isAuthed={this.state.authed} logOutClickEvent={logOutClickEvent} />
         <Profile />
       </div>
     );

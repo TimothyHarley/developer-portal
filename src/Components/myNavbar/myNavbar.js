@@ -8,14 +8,15 @@ import {
   NavItem,
   NavLink,
 } from 'reactstrap';
-import './myNavbar.scss';
+import './MyNavbar.scss';
 
-class myNavbar extends React.Component {
+class MyNavbar extends React.Component {
   state = {
     isOpen: false,
   };
 
   render() {
+    const { isAuthed, logOutClickEvent } = this.props;
     return (
       <div className="my-navbar">
       <Navbar color="dark" dark expand="md">
@@ -24,7 +25,7 @@ class myNavbar extends React.Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/components/">Logout</NavLink>
+                { isAuthed ? <NavLink onClick={logOutClickEvent}>Logout</NavLink> : ''};
               </NavItem>
             </Nav>
           </Collapse>
@@ -34,4 +35,4 @@ class myNavbar extends React.Component {
   }
 }
 
-export default myNavbar;
+export default MyNavbar;
