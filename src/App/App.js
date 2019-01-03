@@ -10,6 +10,7 @@ import ProjectAddForm from '../Components/projectAddForm/projectAddForm';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.scss';
 import ProjectDisplay from '../Components/projectDisplay/projectDisplay';
+import userDataRequest from '../Helpers/Data/userDataRequest';
 
 class App extends Component {
   state = {
@@ -18,6 +19,13 @@ class App extends Component {
 
   componentDidMount() {
     connection();
+    userDataRequest()
+      .then((result) => {
+        console.log(result);
+      }).catch((error) => {
+        console.error(error);
+      });
+
     this.removeListener = firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         this.setState({
