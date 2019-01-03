@@ -6,8 +6,10 @@ import Auth from '../Components/Auth/Auth';
 import authRequests from '../Helpers/Data/authRequests';
 import MyNavbar from '../Components/myNavbar/myNavbar';
 import Profile from '../Components/Profile/profile';
+import ProjectAddForm from '../Components/projectAddForm/projectAddForm';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.scss';
+import ProjectDisplay from '../Components/projectDisplay/projectDisplay';
 
 class App extends Component {
   state = {
@@ -55,6 +57,8 @@ class App extends Component {
       <div className="App">
         <MyNavbar isAuthed={this.state.authed} logOutClickEvent={logOutClickEvent} />
         <Profile />
+        <ProjectAddForm />
+        <ProjectDisplay />
       </div>
     );
   }
