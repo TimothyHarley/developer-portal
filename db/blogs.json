@@ -1,10 +1,12 @@
 {
 	"blog1": {
 		"name": "blog 1",
-		"link": "http://www.google.com"
+		"link": "http://www.google.com",
+		"uid": "ZcgobfImUeUdhXPiMi4W4tIkqk23"
 	},
 	"blog2": {
 		"name": "blog 2",
-		"link": "http://www.google.com"
+		"link": "http://www.google.com",
+		"uid": "WpJYYzW4VFSVvCMUaVOiMh6C96J2"
 	}
 }
