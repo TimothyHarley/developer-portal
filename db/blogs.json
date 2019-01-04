@@ -1,0 +1,10 @@
+{
+	"blog1": {
+		"name": "blog 1",
+		"link": "http://www.google.com"
+	},
+	"blog2": {
+		"name": "blog 2",
+		"link": "http://www.google.com"
+	}
+}

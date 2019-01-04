@@ -1,0 +1,10 @@
+{
+	"documentation1": {
+		"name": "documentation 1",
+		"link": "http://www.google.com"
+	},
+	"documentation2": {
+		"name": "documentation 2",
+		"link": "http://www.google.com"
+	}
+}

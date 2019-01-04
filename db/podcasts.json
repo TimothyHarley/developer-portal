@@ -1,0 +1,10 @@
+{
+	"podcast1": {
+		"name": "podcast 1",
+		"link": "http://www.google.com"
+	},
+	"podcast2": {
+		"name": "podcast 2",
+		"link": "http://www.google.com"
+	}
+}
