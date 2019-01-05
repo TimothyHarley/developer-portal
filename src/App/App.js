@@ -112,7 +112,7 @@ class App extends Component {
       <div className="App">
         <MyNavbar isAuthed={this.state.authed} logOutClickEvent={logOutClickEvent} />
         <div className="row ml-1">
-          <Profile profile={this.state.Profile}/>
+          <Profile profile={this.state.profile}/>
           <div className="col">
             <ProjectAddForm />
             <ProjectDisplay
