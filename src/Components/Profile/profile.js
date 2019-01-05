@@ -1,12 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Card, CardImg, CardText, CardBody,
-  CardTitle, CardSubtitle } from 'reactstrap';
+import {
+  Card, CardImg, CardText, CardBody,
+  CardTitle, CardSubtitle,
+} from 'reactstrap';
+import profileShape from '../../Helpers/propz/profileShape';
 import './profile.scss';
 
 class Profile extends React.Component {
-  static PropTypes = {
-    profile: PropTypes.objectOf(PropTypes.object),
+  static propTypes = {
+    profile: PropTypes.objectOf(profileShape),
   }
 
   render() {
