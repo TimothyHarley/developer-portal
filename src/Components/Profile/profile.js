@@ -1,9 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Card, CardImg, CardText, CardBody,
   CardTitle, CardSubtitle } from 'reactstrap';
 import './profile.scss';
 
 class Profile extends React.Component {
+  static PropTypes = {
+    profile: PropTypes.objectOf(PropTypes.object),
+  }
+
   render() {
     return (
       <div className="profile">
