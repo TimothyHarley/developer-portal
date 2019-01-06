@@ -10,7 +10,7 @@ class blogItem extends React.Component {
   render() {
     const { blog } = this.props;
     return (
-      <li className="listing-item text-center">
+      <li className="blog-item text-center">
         <span className="col-7">{blog.name}</span>
         <span className="col-3"><a href={blog.link}>{blog.link}</a></span>
       </li>
