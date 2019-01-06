@@ -19,6 +19,7 @@ import userDataRequest from '../Helpers/Data/userDataRequest';
 class App extends Component {
   state = {
     authed: false,
+    profile: {},
     blogs: [],
     documentations: [],
     podcasts: [],
@@ -28,12 +29,12 @@ class App extends Component {
   componentDidMount() {
     connection();
 
-    userDataRequest()
-      .then((result) => {
-        console.log(result);
+    userDataRequest.getUserInfo()
+      .then((profile) => {
+        this.setState({ profile: profile.data });
       })
       .catch((error) => {
-        console.error(error);
+        console.error('error in getting github profile', error);
       });
 
     blogRequest()
@@ -110,7 +111,7 @@ class App extends Component {
       <div className="App">
         <MyNavbar isAuthed={this.state.authed} logOutClickEvent={logOutClickEvent} />
         <div className="row ml-1">
-          <Profile />
+          <Profile profile={this.state.profile}/>
           <div className="col">
             <ProjectAddForm />
             <ProjectDisplay
