@@ -19,7 +19,7 @@ import userDataRequest from '../Helpers/Data/userDataRequest';
 class App extends Component {
   state = {
     authed: false,
-    profile: [],
+    profile: {},
     blogs: [],
     documentations: [],
     podcasts: [],
@@ -31,8 +31,7 @@ class App extends Component {
 
     userDataRequest.getUserInfo()
       .then((profile) => {
-        console.log(profile);
-        this.setState({ profile });
+        this.setState({ profile: profile.data });
       })
       .catch((error) => {
         console.error('error in getting github profile', error);

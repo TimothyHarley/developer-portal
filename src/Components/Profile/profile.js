@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {
   Card, CardImg, CardText, CardBody,
   CardTitle, CardSubtitle,
@@ -9,7 +8,7 @@ import './profile.scss';
 
 class Profile extends React.Component {
   static propTypes = {
-    profile: PropTypes.objectOf(profileShape),
+    profile: profileShape,
   }
 
   render() {
