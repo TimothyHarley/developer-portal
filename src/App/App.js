@@ -19,7 +19,9 @@ import userDataRequest from '../Helpers/Data/userDataRequest';
 class App extends Component {
   state = {
     authed: false,
+    authEmail: '',
     profile: {},
+    commits: 0,
     blogs: [],
     documentations: [],
     podcasts: [],
@@ -32,6 +34,14 @@ class App extends Component {
     userDataRequest.getUserInfo()
       .then((profile) => {
         this.setState({ profile: profile.data });
+      })
+      .catch((error) => {
+        console.error('error in getting github profile', error);
+      });
+
+    userDataRequest.getUserEvents()
+      .then((commits) => {
+        this.setState({ commits });
       })
       .catch((error) => {
         console.error('error in getting github profile', error);
@@ -74,6 +84,7 @@ class App extends Component {
       if (user) {
         this.setState({
           authed: true,
+          authEmail: user.email,
         });
       } else {
         this.setState({
@@ -111,7 +122,7 @@ class App extends Component {
       <div className="App">
         <MyNavbar isAuthed={this.state.authed} logOutClickEvent={logOutClickEvent} />
         <div className="row ml-1">
-          <Profile profile={this.state.profile}/>
+          <Profile profile={this.state.profile} commits={this.state.commits}/>
           <div className="col">
             <ProjectAddForm />
             <ProjectDisplay
