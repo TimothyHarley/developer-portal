@@ -17,6 +17,8 @@ import podcastsShape from '../../Helpers/propz/podcastsShape';
 import tutorialsShape from '../../Helpers/propz/tutorialsShape';
 import BlogItem from '../blogItem/blogItem';
 import DocItem from '../docItem/docItem';
+import PodcastItem from '../podcastItem/podcastItem';
+import TutorialItem from '../tutorialItem/tutorialItem';
 
 class projectDisplay extends React.Component {
   static propTypes = {
@@ -57,6 +59,22 @@ class projectDisplay extends React.Component {
       <DocItem
         documentation={documentation}
         key={documentation.id}
+        />
+    ));
+
+    const { podcasts } = this.props;
+    const podcastItemComponents = podcasts.map(podcast => (
+      <PodcastItem
+        podcast={podcast}
+        key={podcast.id}
+        />
+    ));
+
+    const { tutorials } = this.props;
+    const tutorialItemComponents = tutorials.map(tutorial => (
+      <TutorialItem
+        tutorial={tutorial}
+        key={tutorial.id}
         />
     ));
 
@@ -115,14 +133,14 @@ class projectDisplay extends React.Component {
           <TabPane tabId="3">
             <Row>
               <Col sm="12">
-              <h3>podcasts</h3>
+              <ul>{podcastItemComponents}</ul>
               </Col>
             </Row>
           </TabPane>
           <TabPane tabId="4">
             <Row>
               <Col sm="12">
-              <h3>tutorials</h3>
+              <ul>{tutorialItemComponents}</ul>
               </Col>
             </Row>
           </TabPane>

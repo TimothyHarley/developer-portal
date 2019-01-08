@@ -10,7 +10,7 @@ class docItem extends React.Component {
   render() {
     const { documentation } = this.props;
     return (
-      <li className="blog-item text-center">
+      <li className="doc-item text-center">
         <span className="col-7">{documentation.name}</span>
         <span className="col-3"><a href={documentation.link}>{documentation.link}</a></span>
       </li>
