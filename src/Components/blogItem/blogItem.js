@@ -1,6 +1,7 @@
 import React from 'react';
 import './blogItem.scss';
 import blogsShape from '../../Helpers/propz/blogsShape';
+import authRequests from '../../Helpers/Data/authRequests';
 
 class blogItem extends React.Component {
   static propTypes = {
@@ -8,6 +9,9 @@ class blogItem extends React.Component {
   }
 
   render() {
+    const uid = authRequests.getCurrentUid();
+    console.log(uid);
+
     const { blog } = this.props;
     return (
       <li className="blog-item text-center">

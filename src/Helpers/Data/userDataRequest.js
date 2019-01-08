@@ -9,7 +9,7 @@ const clientSecret = apiKeys.githubApi.client_secret;
 const getUserInfo = () => axios.get(`http://api.github.com/users/TimothyHarley?client_id=${clientId}&client_secret=${clientSecret}`);
 
 const getUserEvents = () => new Promise((resolve, reject) => {
-  axios.get('http://api.github.com/users/TimothyHarley/events/public')
+  axios.get(`http://api.github.com/users/TimothyHarley/events/public?client_id=${clientId}&client_secret=${clientSecret}`)
     .then((result) => {
       let totalCommits = 0;
       const eventFilter = result.data.filter(

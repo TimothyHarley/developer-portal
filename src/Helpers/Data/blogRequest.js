@@ -3,8 +3,6 @@ import apiKeys from '../apiKeys';
 
 const fireBase = apiKeys.firebaseConfig.databaseURL;
 
-// ?orderBy="uid"&equalTo="${uid}"
-
 const getRequest = () => new Promise((resolve, reject) => {
   axios
     .get(`${fireBase}/blogs.json`)
