@@ -19,7 +19,7 @@ import userDataRequest from '../Helpers/Data/userDataRequest';
 class App extends Component {
   state = {
     authed: false,
-    authEmail: '',
+    authUid: '',
     profile: {},
     commits: 0,
     blogs: [],
@@ -84,7 +84,7 @@ class App extends Component {
       if (user) {
         this.setState({
           authed: true,
-          authEmail: user.email,
+          authUid: user.uid,
         });
       } else {
         this.setState({
@@ -126,6 +126,7 @@ class App extends Component {
           <div className="col">
             <ProjectAddForm />
             <ProjectDisplay
+              authUid={this.state.authUid}
               blogs={this.state.blogs}
               documentations={this.state.documentations}
               podcasts={this.state.podcasts}

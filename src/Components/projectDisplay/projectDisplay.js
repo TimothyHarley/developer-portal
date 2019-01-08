@@ -6,10 +6,6 @@ import {
   Nav,
   NavItem,
   NavLink,
-  Card,
-  Button,
-  CardTitle,
-  CardText,
   Row,
   Col,
 } from 'reactstrap';
@@ -20,6 +16,9 @@ import documentationsShape from '../../Helpers/propz/documentationShape';
 import podcastsShape from '../../Helpers/propz/podcastsShape';
 import tutorialsShape from '../../Helpers/propz/tutorialsShape';
 import BlogItem from '../blogItem/blogItem';
+import DocItem from '../docItem/docItem';
+import PodcastItem from '../podcastItem/podcastItem';
+import TutorialItem from '../tutorialItem/tutorialItem';
 
 class projectDisplay extends React.Component {
   static propTypes = {
@@ -54,9 +53,33 @@ class projectDisplay extends React.Component {
         key={blog.id}
         />
     ));
+
+    const { documentations } = this.props;
+    const docItemComponents = documentations.map(documentation => (
+      <DocItem
+        documentation={documentation}
+        key={documentation.id}
+        />
+    ));
+
+    const { podcasts } = this.props;
+    const podcastItemComponents = podcasts.map(podcast => (
+      <PodcastItem
+        podcast={podcast}
+        key={podcast.id}
+        />
+    ));
+
+    const { tutorials } = this.props;
+    const tutorialItemComponents = tutorials.map(tutorial => (
+      <TutorialItem
+        tutorial={tutorial}
+        key={tutorial.id}
+        />
+    ));
+
     return (
       <div className='projectDisplay'>
-        <h2>Project Display</h2>
         <div>
         <Nav tabs>
           <NavItem>
@@ -72,7 +95,23 @@ class projectDisplay extends React.Component {
               className={classnames({ active: this.state.activeTab === '2' })}
               onClick={() => { this.toggle('2'); }}
             >
-              Moar Tabs
+              Documentaions
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink
+              className={classnames({ active: this.state.activeTab === '3' })}
+              onClick={() => { this.toggle('3'); }}
+            >
+              Podcasts
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink
+              className={classnames({ active: this.state.activeTab === '4' })}
+              onClick={() => { this.toggle('4'); }}
+            >
+              Tutorials
             </NavLink>
           </NavItem>
         </Nav>
@@ -86,19 +125,22 @@ class projectDisplay extends React.Component {
           </TabPane>
           <TabPane tabId="2">
             <Row>
-              <Col sm="6">
-                <Card body>
-                  <CardTitle>Special Title Treatment</CardTitle>
-                  <CardText>With text below as a natural lead-in to additional content.</CardText>
-                  <Button>Go somewhere</Button>
-                </Card>
+              <Col sm="12">
+              <ul>{docItemComponents}</ul>
               </Col>
-              <Col sm="6">
-                <Card body>
-                  <CardTitle>Special Title Treatment</CardTitle>
-                  <CardText>With text below as a natural lead-in to additional content.</CardText>
-                  <Button>Go somewhere</Button>
-                </Card>
+            </Row>
+          </TabPane>
+          <TabPane tabId="3">
+            <Row>
+              <Col sm="12">
+              <ul>{podcastItemComponents}</ul>
+              </Col>
+            </Row>
+          </TabPane>
+          <TabPane tabId="4">
+            <Row>
+              <Col sm="12">
+              <ul>{tutorialItemComponents}</ul>
               </Col>
             </Row>
           </TabPane>
